@@ -68,6 +68,9 @@ module.exports = function(RED) {
         }
         
         function formatCsv(msg) {
+            if (msg.headerstr) {
+                node.options.headers = msg.headerstr.split(',');
+            }
             csv.writeToString(
                 msg.payload,
                 node.options,
